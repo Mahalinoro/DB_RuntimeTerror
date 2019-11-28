@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2019 at 09:29 AM
+-- Generation Time: Nov 28, 2019 at 10:20 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -37,8 +37,18 @@ CREATE TABLE `customers` (
   `Street_number` varchar(50) DEFAULT NULL,
   `Email_Address` varchar(50) DEFAULT NULL,
   `Phone` varchar(50) DEFAULT NULL,
-  `Date_of_Birth` date DEFAULT NULL
+  `Date_of_Birth` date DEFAULT NULL,
+  `Gender` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`Customer_ID`, `First_Name`, `Last_Name`, `City`, `District`, `Street_number`, `Email_Address`, `Phone`, `Date_of_Birth`, `Gender`) VALUES
+(1, 'William', 'Green', 'Kigali', 'Remera', 'KG 225 St', 'william.green@gmail.com', '+250788653465', '1998-10-02', 'Male'),
+(2, 'Patrick', 'Eric', 'Kigali', 'City Center', 'KG 312 St', 'patrick12eric@yahoo.com', '+2507845763458', '1997-06-12', 'Male'),
+(3, 'David ', 'Thierry', 'Kigali', 'Nyamirambo', 'KG 723 St', 'davitheiry@gmail.com', '+250785564737', '1998-12-15', 'Male');
 
 -- --------------------------------------------------------
 
@@ -156,6 +166,16 @@ ALTER TABLE `shipping`
 ALTER TABLE `user_account`
   ADD PRIMARY KEY (`Account_ID`),
   ADD KEY `FK` (`Customer_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
