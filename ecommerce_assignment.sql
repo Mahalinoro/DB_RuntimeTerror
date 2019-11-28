@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2019 at 09:06 AM
+-- Generation Time: Nov 28, 2019 at 09:29 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecommerce_sql`
+-- Database: `ecommerce_assignment`
 --
 
 -- --------------------------------------------------------
@@ -33,11 +33,10 @@ CREATE TABLE `customers` (
   `First_Name` varchar(50) DEFAULT NULL,
   `Last_Name` varchar(50) DEFAULT NULL,
   `City` varchar(50) DEFAULT NULL,
-  `State` varchar(50) DEFAULT NULL,
-  `Street` varchar(50) DEFAULT NULL,
+  `District` varchar(50) DEFAULT NULL,
+  `Street_number` varchar(50) DEFAULT NULL,
   `Email_Address` varchar(50) DEFAULT NULL,
   `Phone` varchar(50) DEFAULT NULL,
-  `Zip` int(11) DEFAULT NULL,
   `Date_of_Birth` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -52,6 +51,7 @@ CREATE TABLE `order` (
   `Account_ID` int(11) DEFAULT NULL,
   `To_Street` varchar(50) DEFAULT NULL,
   `To_City` varchar(50) DEFAULT NULL,
+  `To_District` varchar(50) DEFAULT NULL,
   `Product_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
