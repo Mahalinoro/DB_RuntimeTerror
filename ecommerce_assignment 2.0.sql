@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2019 at 06:25 PM
+-- Generation Time: Nov 29, 2019 at 01:46 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -21,6 +21,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `ecommerce_assignment`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `credit_card`
+--
+
+CREATE TABLE `credit_card` (
+  `Card_ID` int(11) NOT NULL,
+  `Customer_ID` int(11) NOT NULL,
+  `Card_number` bigint(20) NOT NULL,
+  `Card_name` varchar(50) NOT NULL,
+  `Expiry_year` year(4) NOT NULL,
+  `Expiry_month` int(11) NOT NULL,
+  `Card_type` varchar(50) NOT NULL,
+  `Code` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `credit_card`
+--
+
+INSERT INTO `credit_card` (`Card_ID`, `Customer_ID`, `Card_number`, `Card_name`, `Expiry_year`, `Expiry_month`, `Card_type`, `Code`) VALUES
+(1, 1, 2345678956342345, 'William Green', 2021, 8, 'Visa', 765),
+(2, 2, 3456745682343458, 'Patrick Eric', 2022, 6, 'MasterCard', 567),
+(3, 3, 3469087656782543, 'David Thierry', 2023, 12, 'Visa', 345),
+(4, 4, 1234567890343456, 'Gloria Bonaventure', 2023, 4, 'Visa', 389),
+(5, 5, 6543217899009654, 'Nana Fiston', 2021, 9, 'Visa', 466),
+(6, 6, 7658490345672356, 'Iradukunda Daniel', 2023, 4, 'Visa', 456),
+(7, 7, 3456798765439876, 'Winny Patient', 2022, 11, 'MasterCard', 234),
+(8, 8, 2457896540392567, 'Janvier Pacifique', 2023, 3, 'Visa', 237),
+(9, 9, 3456721987984557, 'Diane Gasaro', 2021, 8, 'Visa', 234),
+(10, 10, 3456756789035677, 'Samuel Abijuru', 2023, 6, 'MasterCard', 897),
+(11, 11, 4846041005842996, 'Diane Tuisenge', 2023, 4, 'Visa', 141),
+(12, 12, 4846452135487624, 'Cedric Nyamesindu', 2025, 6, 'Visa', 224),
+(13, 13, 4846245879451236, 'Sandra Gatete', 2020, 9, 'Visa', 785),
+(14, 14, 4845789542315468, 'Larvina Cofie', 2024, 12, 'MasterCard', 888),
+(15, 15, 4857892465841200, 'Innocent Mutoni', 2026, 11, 'Visa', 131),
+(16, 16, 5845621000245780, 'Kevin Umutesi', 2020, 10, 'MasterCard', 121),
+(17, 17, 4587213645978548, 'Nancy Mugabe', 2023, 4, 'Visa', 303),
+(18, 18, 2215482654789424, 'Christian Nsegimana', 2021, 2, 'Visa', 898),
+(19, 19, 1100245784542347, 'Jimmy Ingabire', 2022, 5, 'Visa', 711),
+(20, 20, 2211445862487954, 'Joshua Umutesi', 2024, 7, 'MasterCard', 875),
+(21, 21, 1458762331455588, 'Nicole Ishimwe', 2023, 6, 'MasterCard', 331);
 
 -- --------------------------------------------------------
 
@@ -198,6 +242,41 @@ INSERT INTO `product` (`Product_ID`, `Product_Category`, `Product_Name`, `Price`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `Review_ID` int(11) NOT NULL,
+  `Product_ID` int(11) NOT NULL,
+  `Account_ID` int(11) NOT NULL,
+  `User_review` varchar(200) NOT NULL,
+  `Date` datetime NOT NULL,
+  `Rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`Review_ID`, `Product_ID`, `Account_ID`, `User_review`, `Date`, `Rating`) VALUES
+(1, 2, 1, 'Great product', '2019-11-12 11:11:00', 5),
+(2, 6, 7, 'Wish it was delivered on time', '2019-11-13 12:22:05', 3),
+(3, 3, 4, 'Love it. Cool product', '2019-11-16 09:11:00', 4),
+(4, 1, 2, 'I recommend this to anyone', '2019-11-17 13:16:00', 5),
+(5, 13, 3, 'I don\'t like it that much', '2019-11-21 15:21:00', 2),
+(6, 8, 5, 'Nice service', '2019-11-29 12:16:00', 5),
+(7, 12, 10, 'best work. I am so impressed.', '2019-11-14 17:16:26', 5),
+(8, 10, 14, 'Thank you.', '2020-01-16 12:11:22', 4),
+(9, 11, 9, 'Thank you.', '2019-11-29 03:25:10', 4),
+(10, 15, 15, 'I love this online shop', '2019-11-21 05:15:12', 3),
+(11, 16, 16, 'Thank you. I love this.', '2019-11-20 03:29:22', 4),
+(12, 18, 18, 'Thank you. I love this. I recommend this everyone ', '2019-11-27 02:14:00', 0),
+(13, 19, 17, 'Thank you.', '2019-11-13 07:08:00', 4),
+(14, 20, 19, 'Thank you.', '2019-11-29 10:11:00', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shipping`
 --
 
@@ -236,8 +315,7 @@ INSERT INTO `shipping` (`Shipping_ID`, `Payment_ID`, `Shipping_Status`, `Shippin
 (18, 18, 1, '3000.00', '2019-11-03 06:38:30', '2019-11-04 07:38:03', 0),
 (19, 19, 1, '2000.00', '2019-08-07 12:40:10', '2019-08-08 07:40:01', 1),
 (20, 20, 1, '1500.00', '2019-10-09 09:12:20', '2019-10-10 07:12:02', 1),
-(21, 21, 1, '2500.00', '2019-11-15 09:30:11', '2019-11-16 07:30:11', 1),
-(22, 22, 1, '2500.00', '2019-11-26 07:26:23', '2019-11-27 07:26:23', 1);
+(21, 21, 1, '2500.00', '2019-11-15 09:30:11', '2019-11-16 07:30:11', 1);
 
 -- --------------------------------------------------------
 
@@ -283,6 +361,13 @@ INSERT INTO `user_account` (`Account_ID`, `Customer_ID`, `Account_Name`) VALUES
 --
 
 --
+-- Indexes for table `credit_card`
+--
+ALTER TABLE `credit_card`
+  ADD PRIMARY KEY (`Card_ID`),
+  ADD UNIQUE KEY `Customer_ID` (`Customer_ID`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -309,6 +394,14 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`Product_ID`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`Review_ID`),
+  ADD UNIQUE KEY `Product_ID` (`Product_ID`),
+  ADD UNIQUE KEY `Account_ID` (`Account_ID`);
+
+--
 -- Indexes for table `shipping`
 --
 ALTER TABLE `shipping`
@@ -327,10 +420,22 @@ ALTER TABLE `user_account`
 --
 
 --
+-- AUTO_INCREMENT for table `credit_card`
+--
+ALTER TABLE `credit_card`
+  MODIFY `Card_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `Review_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
