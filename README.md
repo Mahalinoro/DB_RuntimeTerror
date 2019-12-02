@@ -17,7 +17,7 @@ git clone 'repository url'
 
 1. Documentation file of the project
 2. Sql dump file
-3. Entity Relationship Diagram
+3. Entity Relationship Diagrams [Conceptual/Normalized physical ERDS]
 4. Queries and results file
 
 ## Built With
